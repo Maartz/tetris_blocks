@@ -1,8 +1,9 @@
 defmodule Tetris.Points do
 
+  # TODO: transform fn to lambdas
+
   def translate(points, {x, y}) do
     Enum.map(points, fn {dx, dy} -> {dx + x, dy + y} end)
-    # Enum.map(points, &(&1 + x, &2 + y))
   end
 
   def transpose(points) do
@@ -12,12 +13,12 @@ defmodule Tetris.Points do
 
   def mirror(points) do
     points
-    |> Enum.map(fn {x, y} -> {4-x, y} end)
+    |> Enum.map(fn {x, y} -> {5-x, y} end)
   end
 
   def flip(points) do
     points
-    |> Enum.map(fn {x, y} -> {x, 4 - y} end)
+    |> Enum.map(fn {x, y} -> {x, 5 - y} end)
   end
 
   def rotate_90(points) do
