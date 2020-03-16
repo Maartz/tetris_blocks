@@ -1,7 +1,7 @@
 defmodule Tetris.PointsTest do
   use ExUnit.Case
 
-  alias Tetris.Points
+  alias Tetris.Point
 
   test "should flip rotate and mirror" do
     [{1, 1}]
