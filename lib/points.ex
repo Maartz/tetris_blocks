@@ -1,25 +1,19 @@
 defmodule Tetris.Points do
-
-  # TODO: transform fn to lambdas
-
   def translate(points, {x, y}) do
-    Enum.map(points, fn {dx, dy} -> {dx + x, dy + y} end)
+    Enum.map(points, fn {dx, dy} -> {dx + x, dy + y} end )
   end
 
   def transpose(points) do
     points
-    |> Enum.map(fn {x, y} -> {y, x} end)
+    |> Enum.map( fn {x, y} -> {y, x} end )
   end
-
   def mirror(points) do
     points
-    |> Enum.map(fn {x, y} -> {5-x, y} end)
+    |> Enum.map( fn {x, y} -> {5-x, y} end )
   end
-
   def flip(points) do
     points
-    |> Enum.map(fn {x, y} -> {x, 5-y} end)
-    # |> Enum.map(fn {x, y} -> {x, 5-y} end)
+    |> Enum.map( fn {x, y} -> {x, 5-y} end )
   end
 
   def rotate_90(points) do
@@ -29,7 +23,6 @@ defmodule Tetris.Points do
   end
 
   def rotate(points, 0), do: points
-
   def rotate(points, degrees) do
     rotate(
       rotate_90(points),
@@ -40,11 +33,11 @@ defmodule Tetris.Points do
   def to_string(points) do
     map =
       points
-      |> Enum.map(fn key -> {key, "◼︎"} end)
+      |> Enum.map(fn key -> {key, "■"} end)
       |> Map.new
 
-    for x <- (1..4), y <- (1..4) do
-      Map.get(map, {x, y}, "▢")
+    for y <- (1..4), x <- (1..4) do
+      Map.get(map, {x, y}, "□")
     end
     |> Enum.chunk_every(4)
     |> Enum.map(&Enum.join/1)
@@ -53,9 +46,7 @@ defmodule Tetris.Points do
 
   def print(points) do
     IO.puts __MODULE__.to_string(points)
-    IO.puts '-------'
     points
   end
-
 end
 
