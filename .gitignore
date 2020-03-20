@@ -27,4 +27,4 @@ _build
 .idea
 
 .formatter.exs
-
+.elixir_ls
