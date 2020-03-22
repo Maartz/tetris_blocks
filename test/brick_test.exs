@@ -38,15 +38,15 @@ defmodule Tetris.BrickTest do
       new_brick(name: :i)
       |> shape()
 
-    assert {2,1} in points
-    assert {2,2} in points
+    assert {2, 1} in points
+    assert {2, 2} in points
   end
 
   test "should translate a list point" do
     brick =
       new_brick(name: :o)
       |> shape()
-      |> translate({1,1})
+      |> translate({1, 1})
 
     assert brick == [{3, 3}, {4, 3}, {3, 4}, {4, 4}]
   end
